@@ -10,6 +10,8 @@ package-mode = false
 python = "~3.11"
 requests = "^2.32.3"
 beautifulsoup4 = "^4.12.3"
+sqlalchemy = "^2.0.31"
+psycopg2-binary = "^2.9.9"
 
 [tool.poetry.group.development.dependencies]
 ruff = '^0.0.285'

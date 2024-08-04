@@ -1,3 +1,4 @@
+import functools
 import os
 
 import requests
@@ -20,3 +21,15 @@ def scrape_url(url: str, scraping_service_url: str = SCRAPING_SERVICE_URL) -> st
     body = {"url": url}
     response = requests.get(scraping_service_url, json=body)
     return response.json()["html"]
+
+
+def url_or_html_parser(func):
+    """Make parsing functions accept either a URL or HTML content."""
+
+    @functools.wraps(func)
+    def wrapper(source, *args, **kwargs):
+        if source.startswith("http"):
+            source = scrape_url(kwargs["html_content"])
+        return func(source, *args, **kwargs)
+
+    return wrapper

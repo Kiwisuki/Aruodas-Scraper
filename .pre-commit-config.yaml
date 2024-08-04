@@ -24,3 +24,9 @@ repos:
         language: system
         entry: pytest
         pass_filenames: false
+    -   id: poetry-export
+        name: Poetry export
+        language: system
+        entry: poetry export --without-hashes --without development,notebooks -f requirements.txt -o requirements.txt
+        pass_filenames: false
+        files: ^pyproject.toml$
