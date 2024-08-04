@@ -13,4 +13,6 @@ try:
 
     assert load_dotenv(), "No .env file found, have you copied .env.tmpl to .env?"
 except ImportError:
-    LOGGER.warning("No .env file found, this is expected if running via Docker.")
+    LOGGER.warning(
+        "python-dotenv not installed, skipping .env loading, this is expected if running via Docker."
+    )
